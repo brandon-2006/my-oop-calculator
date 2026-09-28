@@ -63,3 +63,11 @@ def test_reject_non_calculation():
     with pytest.raises(TypeError):
         history.add("not a calculation")
     assert history.get_history() == []
+
+def test_remove_empty_history():
+    history = History()
+
+    with pytest.raises(IndexError):
+        history.remove(0)
+
+    assert history.get_history() == []
